@@ -1,0 +1,50 @@
+✔ 1. Project Initialization @done(24-08-22 19:04)
+ ✔ Create a new Rust project: Use cargo new 0-shell to create a new Rust project. @done(24-08-22 19:04)
+ ✔ Configure the project: Modify Cargo.toml if needed to include useful dependencies, such as nix for Unix system calls, although the goal is to minimize the use of such abstractions. @done(24-08-22 19:04)
+
+
+☐ 2. Shell Basics
+ ☐ Display the prompt: Implement a main loop that displays a $ prompt to the user and waits for input.
+ ☐ Read user commands: Use io::stdin to read commands that the user types in.
+ ☐ Parse the command: Split the input line into a command and arguments, using spaces as delimiters.
+
+
+☐ 3. Basic Command Handling
+ ☐ Implement the exit command: If the user types exit, the program should break out of the main loop and terminate.
+ ☐ Implement the echo command: Print the arguments provided after echo.
+ ☐ Implement the pwd command: Display the current directory using Rust’s native system calls (std::env::current_dir()).
+ ☐ Implement the cd command: Change the current directory using std::env::set_current_dir().
+
+
+☐ 4. File and Directory Command Handling
+ ☐ Implement the ls command: List files in the current directory. Add options like -l, -a, -F incrementally.
+ ☐ Implement the cat command: Display the contents of a file.
+ ☐ Implement the cp command: Copy a file from one location to another.
+ ☐ Implement the rm command: Remove a file or directory (with -r for recursive deletion).
+ ☐ Implement the mv command: Move or rename a file or directory.
+ ☐ Implement the mkdir command: Create a new directory.
+
+
+☐ 5. Error Handling
+ ☐ Handle unknown commands: If a command is not recognized, display an error message.
+ ☐ Handle execution errors: For example, handle errors when changing directories (cd) or deleting files (rm).
+
+
+☐ 6. Improvements and Advanced Features
+ ☐ Handle Ctrl + D: Allow the shell to detect Ctrl + D and cleanly terminate the program.
+ ☐ Display the path in the prompt: Show the current directory path before the $ in the prompt.
+ ☐ Add colors: Use the ansi_term crate to add colors to error messages or directory listings.
+ ☐ Autocomplete: Implement basic autocomplete functionality for commands and file paths.
+
+
+☐ 7. Bonus (Very Advanced Features)
+ ☐ Use low-level system calls exclusively: Reimplement file management functions using Unix system calls directly (e.g., through the nix crate or by directly calling libc).
+ ☐ Add pipe support: Implement the ability to connect the output of one command to the input of another using |.
+ ☐ Add input/output redirection: Implement redirection for output (>), input (<), and error streams (2>).
+ ☐ Handle Ctrl + C: Implement proper handling of Ctrl + C to avoid exiting the shell and instead return to the prompt.
+
+
+☐ 8. Testing and Validation
+ ☐ Test each feature: Validate each command implemented to ensure it works correctly in various scenarios.
+ ☐ Handle edge cases: Test commands with invalid or missing arguments to check the robustness of the shell.
+ ☐ Code review: Review the code to ensure compliance with Rust best practices, such as using appropriate error handling (Result and Option).
