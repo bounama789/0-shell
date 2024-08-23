@@ -3,17 +3,17 @@
  ✔ Configure the project: Modify Cargo.toml if needed to include useful dependencies, such as nix for Unix system calls, although the goal is to minimize the use of such abstractions. @done(24-08-22 19:04)
 
 
-☐ 2. Shell Basics
- ☐ Display the prompt: Implement a main loop that displays a $ prompt to the user and waits for input.
- ☐ Read user commands: Use io::stdin to read commands that the user types in.
- ☐ Parse the command: Split the input line into a command and arguments, using spaces as delimiters.
+✔ 2. Shell Basics @done(24-08-23 20:31)
+ ✔ Display the prompt: Implement a main loop that displays a $ prompt to the user and waits for input. @done(24-08-23 20:31)
+ ✔ Read user commands: Use io::stdin to read commands that the user types in. @done(24-08-23 20:31)
+ ✔ Parse the command: Split the input line into a command and arguments, using spaces as delimiters. @done(24-08-23 20:31)
 
 
-☐ 3. Basic Command Handling
- ☐ Implement the exit command: If the user types exit, the program should break out of the main loop and terminate.
- ☐ Implement the echo command: Print the arguments provided after echo.
- ☐ Implement the pwd command: Display the current directory using Rust’s native system calls (std::env::current_dir()).
- ☐ Implement the cd command: Change the current directory using std::env::set_current_dir().
+✔ 3. Basic Command Handling @done(24-08-23 20:31)
+ ✔ Implement the exit command: If the user types exit, the program should break out of the main loop and terminate. @done(24-08-23 20:31)
+ ✔ Implement the echo command: Print the arguments provided after echo. @done(24-08-23 20:31)
+ ✔ Implement the pwd command: Display the current directory using Rust’s native system calls (std::env::current_dir()). @done(24-08-23 20:31)
+ ✔ Implement the cd command: Change the current directory using std::env::set_current_dir(). @done(24-08-23 20:31)
 
 
 ☐ 4. File and Directory Command Handling
