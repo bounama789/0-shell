@@ -1,7 +1,11 @@
 mod commands;
+mod ls;
 
 use colored::*;
-use commands::{handle_cd, handle_echo, handle_pwd, handle_unknown};
+use commands::{
+    handle_cat, handle_cd, handle_clear, handle_cp, handle_echo, handle_mkdir, handle_mv, handle_pwd, handle_unknown
+};
+use ls::handle_ls;
 use std::io::{self, Write};
 
 fn main() {
@@ -29,9 +33,15 @@ fn main() {
 
         match command {
             "exit" => break,
+            "clear" => handle_clear(),
             "echo" => handle_echo(&args),
             "pwd" => handle_pwd(),
             "cd" => handle_cd(&args),
+            "ls" => handle_ls(&args),
+            "mkdir" => handle_mkdir(&args),
+            "cat" => handle_cat(&args),
+            "cp" => handle_cp(&args),
+            "mv" => handle_mv(&args),
             _ => handle_unknown(command),
         }
     }

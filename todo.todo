@@ -16,13 +16,14 @@
  ✔ Implement the cd command: Change the current directory using std::env::set_current_dir(). @done(24-08-23 20:31)
 
 
-☐ 4. File and Directory Command Handling
- ☐ Implement the ls command: List files in the current directory. Add options like -l, -a, -F incrementally.
- ☐ Implement the cat command: Display the contents of a file.
- ☐ Implement the cp command: Copy a file from one location to another.
+☐ 4. File and Directory Command Handling @started(24-08-26 13:31)
+ ✔ Implement the ls command: List files in the current directory. Add options like -l, -a, -F incrementally. @started(24-08-26 13:31) @done(24-08-26 16:40) @lasted(3h9m40s)
+    ☐ the total is not correct yet
+ ✔ Implement the cat command: Display the contents of a file. @started(24-08-26 16:53) @done(24-08-26 17:00) @lasted(7m56s)
+ ✔ Implement the cp command: Copy a file from one location to another. @started(24-08-26 17:01) @done(24-08-26 17:35) @lasted(34m55s)
  ☐ Implement the rm command: Remove a file or directory (with -r for recursive deletion).
- ☐ Implement the mv command: Move or rename a file or directory.
- ☐ Implement the mkdir command: Create a new directory.
+ ✔ Implement the mv command: Move or rename a file or directory. @done(24-08-26 18:20)
+ ✔ Implement the mkdir command: Create a new directory. @done(24-08-26 16:50)
 
 
 ☐ 5. Error Handling
