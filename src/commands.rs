@@ -4,8 +4,9 @@ use std::fs;
 use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
 
+
 pub fn handle_echo(args: &[&str]) {
-    println!("{}", args.join(" "));
+    println!("{}", args.join(" ").trim_matches('"'));
 }
 
 pub fn handle_pwd() {
@@ -127,4 +128,45 @@ pub fn handle_mv(args: &[&str]) {
 
 pub fn handle_unknown(command: &str) {
     eprintln!("Command '{}' not found", command);
+}
+
+pub fn handle_rm(args: &[&str]) {
+    if args.is_empty() {
+        eprintln!("Usage: rm [-r] <file_or_directory>");
+        return;
+    }
+
+    let recursive = args[0] == "-r";
+    let target = if recursive {
+        if args.len() < 2 {
+            eprintln!("Usage: rm -r <directory>");
+            return;
+        }
+        args[1]
+    } else {
+        args[0]
+    };
+
+    let path = Path::new(target);
+
+    if !path.exists() {
+        eprintln!("rm: {}: No such file or directory", target);
+        return;
+    }
+
+    if path.is_file() || (!recursive && path.is_dir()) {
+        // Remove a file or a directory without recursion
+        match fs::remove_file(path) {
+            Ok(_) => (),
+            Err(e) => eprintln!("rm: {}: {}", target, e),
+        }
+    } else if path.is_dir() && recursive {
+        // Remove a directory with recursion
+        match fs::remove_dir_all(path) {
+            Ok(_) => (),
+            Err(e) => eprintln!("rm: {}: {}", target, e),
+        }
+    } else {
+        eprintln!("rm: cannot remove {}: is a directory", target);
+    }
 }
