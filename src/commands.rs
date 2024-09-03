@@ -2,7 +2,7 @@ use std::env;
 use std::ffi::OsStr;
 use std::fs;
 use std::io::{Read, Write};
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 
 pub fn handle_echo(args: &[&str]) {

@@ -6,7 +6,7 @@ use commands::{
     handle_cat, handle_cd, handle_clear, handle_cp, handle_echo, handle_mkdir, handle_mv, handle_pwd, handle_unknown,handle_rm
 };
 use ls::handle_ls;
-use std::{env, io::{self, Write}, path::PathBuf};
+use std::{env, io::{self, Write}};
 
 
 fn main() {

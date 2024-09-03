@@ -3,6 +3,7 @@ use std::os::unix::fs::PermissionsExt;
 use std::time::UNIX_EPOCH;
 use std::os::unix::fs::MetadataExt;
 use chrono::{DateTime, Local};
+use users::{get_user_by_uid, get_group_by_gid};
 
 pub fn handle_ls(args: &[&str]) {
     let show_all = args.contains(&"-a");  // Show hidden files (starting with .)
@@ -24,6 +25,9 @@ pub fn handle_ls(args: &[&str]) {
     if show_all {
         // Current directory (.)
         if let Ok(metadata) = fs::metadata(".") {
+            if long_format {
+                total_blocks += metadata.blocks() as u64 / 2; // Convert to 512-byte blocks
+            }
             file_entries.push((
                 ".".to_string(),
                 fs::canonicalize(".").unwrap(),
@@ -33,6 +37,9 @@ pub fn handle_ls(args: &[&str]) {
 
         // Parent directory (..)
         if let Ok(metadata) = fs::metadata("..") {
+            if long_format {
+                total_blocks += metadata.blocks() as u64 / 2; // Convert to 512-byte blocks
+            }
             file_entries.push((
                 "..".to_string(),
                 fs::canonicalize("..").unwrap(),
@@ -99,6 +106,15 @@ pub fn handle_ls(args: &[&str]) {
                 if mode & 0o001 != 0 { 'x' } else { '-' },
             );
 
+            // Get user and group names
+            let user_name = get_user_by_uid(metadata.uid())
+                .map(|u| u.name().to_string_lossy().to_string())
+                .unwrap_or_else(|| metadata.uid().to_string());
+
+            let group_name = get_group_by_gid(metadata.gid())
+                .map(|g| g.name().to_string_lossy().to_string())
+                .unwrap_or_else(|| metadata.gid().to_string());
+
             // File size
             let size = metadata.len();
 
@@ -112,8 +128,8 @@ pub fn handle_ls(args: &[&str]) {
                 file_type,
                 mode_str,
                 metadata.nlink(),
-                metadata.uid(),
-                metadata.gid(),
+                user_name,
+                group_name,
                 size,
                 formatted_date,
             );
