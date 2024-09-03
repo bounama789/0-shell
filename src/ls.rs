@@ -76,11 +76,11 @@ pub fn handle_ls(args: &[&str]) {
         }
     }
 
-    if long_format {
+    if long_format && !file_entries.is_empty() {
         println!("total {}", total_blocks);
     }
 
-    for (file_name, path, metadata) in file_entries {
+    for (file_name, path, metadata) in &file_entries {
         if long_format {
             // File type
             let file_type = if metadata.is_dir() {
@@ -157,7 +157,7 @@ pub fn handle_ls(args: &[&str]) {
         }
     }
 
-    if !long_format {
-        println!(); // New line after listing
+    if !long_format && !file_entries.is_empty() {
+        println!(); // New line after listing if there are files
     }
 }
