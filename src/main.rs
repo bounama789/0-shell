@@ -41,11 +41,6 @@ fn main() {
             break;
         }
 
-
-        io::stdin()
-            .read_line(&mut input)
-            .expect("Failed to read line");
-
         if let Some(home_dir) = get_home_directory() {
              input=input.replace("~", &home_dir);
         }
