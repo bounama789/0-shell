@@ -33,7 +33,7 @@
 
 
 ☐ 6. Improvements and Advanced Features
- ☐ Handle Ctrl + D: Allow the shell to detect Ctrl + D and cleanly terminate the program.
+ ✔ Handle Ctrl + D: Allow the shell to detect Ctrl + D and cleanly terminate the program. @done(24-09-07 20:27)
  ✔ Display the path in the prompt: Show the current directory path before the $ in the prompt. @done(24-09-03 12:34)
  ✔ Add colors: Use the ansi_term crate to add colors to error messages or directory listings. @done(24-09-03 12:34)
  ✘ Autocomplete: Implement basic autocomplete functionality for commands and file paths. @cancelled(24-09-03 12:45)

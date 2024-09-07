@@ -32,6 +32,16 @@ fn main() {
         io::stdout().flush().expect("Failed to flush stdout");
 
         let mut input = String::new();
+
+        let bytes_read = io::stdin().read_line(&mut input).expect("Failed to read line");
+
+        // Check if Ctrl + D 
+        if bytes_read == 0 {
+            println!();
+            break;
+        }
+
+
         io::stdin()
             .read_line(&mut input)
             .expect("Failed to read line");
