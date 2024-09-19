@@ -80,6 +80,9 @@ pub fn handle_ls(args: &[&str]) {
         println!("total {}", total_blocks);
     }
 
+    // Sorting files alphabetically by their name
+   file_entries.sort_by(|a, b| a.0.to_lowercase().cmp(&b.0.to_lowercase()));
+
     for (file_name, path, metadata) in &file_entries {
         if long_format {
             // File type
