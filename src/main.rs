@@ -13,7 +13,6 @@ fn main() {
     // Infinite loop to keep the shell running until 'exit' is typed
     
     loop {
-        // let prompt = format!("{}{}", "fake@shell:".cyan().bold(), "~$ ".bright_white());
         let current_dir = match env::current_dir() {
             Ok(path) => path.display().to_string(),
             Err(_) => "Unknown".to_string(), // Gestion des erreurs en cas d'échec
